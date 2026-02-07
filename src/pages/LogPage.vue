@@ -14,7 +14,6 @@ onMounted(() => {
 }) 
 
 // async function loadLog(logName: string) {
-    
 //     if (filename === logName) {
 //         return;
 //     }
@@ -28,6 +27,7 @@ onMounted(() => {
 //     // jsonResponse.value = await response.json();
 //     content.value = md.render(data.content);
 // }
+
 async function loadLog(logName: string) {
     
     // if (filename === logName) {
