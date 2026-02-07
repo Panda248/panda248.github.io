@@ -13,25 +13,34 @@ onMounted(() => {
     `);
 }) 
 
-function loadLog(logName: string) {
+// async function loadLog(logName: string) {
     
-    if (filename === logName) {
-        return;
-    }
-    console.log(`Loading log: ${logName}`);
+//     if (filename === logName) {
+//         return;
+//     }
+//     filename = logName;
+//     content.value = md.render(`
+//     Currently loading ${filename}...
+//     `);
+
+//     const response = await fetch(`http://localhost:8080/dcc-log?filename=${filename}`);
+//     const data = await response.json()
+//     // jsonResponse.value = await response.json();
+//     content.value = md.render(data.content);
+// }
+async function loadLog(logName: string) {
+    
+    // if (filename === logName) {
+    //     return;
+    // }
     filename = logName;
     content.value = md.render(`
     Currently loading ${filename}...
     `);
-    // fs.readFile(`./src/assets/logs/${logName}.md`, "utf-8", finishRead);
-    
-}
 
-function finishRead(err: Error, data: string) {
-    if (err) {
-        console.error(err);
-        return;
-    }
+    const response = await fetch(`src/assets/logs/${filename}.md`);
+    const data = await response.text()
+    // jsonResponse.value = await response.json();
     content.value = md.render(data);
 }
 </script>
@@ -45,11 +54,10 @@ function finishRead(err: Error, data: string) {
         <main >
             <div v-html="content"></div>
             <hr>
-        
             <aside>
             <ul>
                 <li class="montserrat-text" >
-                    <button @click="loadLog('Log#0')" >
+                    <button @click="loadLog('Log0')" >
                         Test Log
                     </button>
                 </li>
