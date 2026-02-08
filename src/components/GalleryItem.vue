@@ -35,8 +35,9 @@
         flex-direction: row;
         padding: 0;
         list-style:none;
-        height: 50vh;
+        height: 25vw;
         width: 100%;
+        padding: 20px 0 20px;
     }
     li {
         display: flexbox;
@@ -46,5 +47,6 @@
         background-image: url("/pandanotfound.png");
         background-position: center;
         background-size: contain;
+        background-repeat: no-repeat;
     }
 </style>

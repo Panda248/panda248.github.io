@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import CanvasItem from '../components/CanvasItem.vue';
+  import HubCanvasItem from '@/components/HubCanvasItem.vue';
   import CoverItem from '../components/CoverItem.vue';
   import GalleryItem from '../components/GalleryItem.vue';
   import LinksItem from '../components/LinksItem.vue';
@@ -8,13 +8,14 @@
 <template>
   <div>
     <header>
-      <LinksItem />
+      
       <CoverItem />
     </header>
     <main>
+      <LinksItem />
       <GalleryItem />
     </main> 
-    <CanvasItem />
+    <HubCanvasItem />
 </div>
 </template>
 

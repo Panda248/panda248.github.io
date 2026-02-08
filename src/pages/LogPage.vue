@@ -6,6 +6,7 @@ import { ref, onMounted } from 'vue';
 
 const md = markdownit();
 let filename = "";
+let lastSelected : EventTarget;
 const content = ref("");
 onMounted(() => {
     content.value = md.render(`
@@ -29,19 +30,26 @@ onMounted(() => {
 // }
 
 async function loadLog(logName: string) {
-    
-    // if (filename === logName) {
-    //     return;
-    // }
+    if (filename === logName) {
+        return;
+    }
+
     filename = logName;
     content.value = md.render(`
     Currently loading ${filename}...
     `);
-
+    
     const response = await fetch(`/logs/${filename}.md`);
     const data = await response.text()
-    // jsonResponse.value = await response.json();
     content.value = md.render(data);
+}
+
+function selectElement(event: Event) {
+    if(event.target == lastSelected) return;
+    if(lastSelected != null) lastSelected.classList.remove("selected");
+    
+    lastSelected = event.target;
+    lastSelected.classList.add("selected");
 }
 </script>
 
@@ -49,19 +57,19 @@ async function loadLog(logName: string) {
     <div id="log-hub">
         <CanvasItem />
         <header>
-                poopoo  
+            <RouterLink class="montserrat-text" to="/">
+                Go Back
+            </RouterLink> 
         </header>
         <main >
             <div v-html="content"></div>
             <hr>
             <aside>
             <ul>
-                <li class="montserrat-text" >
-                    <button @click="loadLog('Log0')" >
-                        Test Log
-                    </button>
+                <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
+                    Test Log
                 </li>
-                <li class="montserrat-text">
+                <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
                     Test Log
                 </li>
             </ul>
@@ -82,8 +90,21 @@ div {
 }
 ul {
     display: flexbox;
-    flex-grow: calc();
     list-style: none;
     padding: 10;
+
+}
+li {
+    width: 100%;
+    pointer-events:all;
+    cursor:pointer;
+}
+li:hover {
+    text-decoration: underline;
+}
+
+.selected {
+    color:aliceblue;
+    text-decoration: underline;
 }
 </style>

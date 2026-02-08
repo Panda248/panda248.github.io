@@ -14,6 +14,21 @@ const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        console.log(from.fullPath);
+        if (from.fullPath == to.fullPath) {
+            return {
+                top: 0
+            }
+        }
+        else {
+            return {
+            el: "main",
+            top: 10,
+            behavior: 'smooth'
+            }
+        }
+    }
 });
 
 const app = createApp(App);
