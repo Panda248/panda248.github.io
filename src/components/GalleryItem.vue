@@ -43,7 +43,7 @@
         flex-grow: 1;
         height: 100%;
         margin: auto;
-        background-image: url("../assets/pandanotfound.png");
+        background-image: url("/pandanotfound.png");
         background-position: center;
         background-size: contain;
     }

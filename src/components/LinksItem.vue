@@ -1,10 +1,10 @@
 <template>
     <div class="Links">
         <a class="prof-links" id="github" href="https://www.github.com/Panda248" target="_blank">
-            <img class="icon" src="../assets/github-mark/github-mark-white.svg" alt="GitHub"/>
+            <img class="icon" src="/github-mark/github-mark-white.svg" alt="GitHub"/>
         </a>
         <a class="prof-links" id="linkedin" href="https://www.linkedin.com/in/andrew-who/" target="_blank">
-            <img class="icon" src="../assets/in-logo/InBug-White.png" alt="LinkedIn"/>
+            <img class="icon" src="/in-logo/InBug-White.png" alt="LinkedIn"/>
         </a>
     </div>
 </template>

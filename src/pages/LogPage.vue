@@ -38,7 +38,7 @@ async function loadLog(logName: string) {
     Currently loading ${filename}...
     `);
 
-    const response = await fetch(`src/assets/logs/${filename}.md`);
+    const response = await fetch(`/logs/${filename}.md`);
     const data = await response.text()
     // jsonResponse.value = await response.json();
     content.value = md.render(data);
