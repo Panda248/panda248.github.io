@@ -6,7 +6,7 @@ import { ref, onMounted } from 'vue';
 
 const md = markdownit();
 let filename = "";
-let lastSelected : EventTarget;
+let lastSelected : HTMLElement;
 const content = ref("");
 onMounted(() => {
     content.value = md.render(`
@@ -46,10 +46,10 @@ async function loadLog(logName: string) {
 
 function selectElement(event: Event) {
     if(event.target == lastSelected) return;
-    if(lastSelected != null) lastSelected.classList.remove("selected");
+    if(lastSelected != null) (lastSelected).classList.remove("selected");
     
-    lastSelected = event.target;
-    lastSelected.classList.add("selected");
+    lastSelected = event.target as HTMLElement;
+    (lastSelected).classList.add("selected");
 }
 </script>
 

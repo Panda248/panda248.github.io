@@ -20,61 +20,127 @@ import {Point, degToRad, drawLine, fromPolar} from "../assets/CanvasUtils"
 
 let ctx : CanvasRenderingContext2D;
 
-let intervalId : number;
+let clearCanvasID : number;
 
-let outerR : number;
-let K : number;
-let theta : number;
-let center : Point;
-let pos : Point;
-let dtheta : number;
+const lineRunners : lineRunner[] = [];
+
+const runnerCount = 10;
+
 const framerate = 24;
+const delay = 1000/framerate;
 
-function start(context: CanvasRenderingContext2D) {
-    ctx = context;
-    const width = context.canvas.width;
-    const height = context.canvas.height;
 
-    center = new Point(width / 2, height / 2);
-    outerR = (Math.random()*500) + 500;
-    K = (Math.random()*10.0);
-    theta = 0;
-    dtheta = 5;
-    const r = (outerR * Math.cos(degToRad * theta * K));
-    pos = fromPolar(r, theta).add(center);
+class lineRunner {
+    id : number;
+    R : number;
+    K : number;
+    theta : number;
+    center : Point;
+    pos : Point;
+    dtheta : number;
+
+    constructor() {
+        this.id = -1;
+        this.R = (Math.random() * 500) + 500;
+        this.K = Math.random() * 2;
+        this.center = new Point(Math.random() * ctx.canvas.width, Math.random() * ctx.canvas.height);
+        this.theta = Math.random() * 360;
+        this.dtheta = 5;
+
+        const r = this.getr();
+        this.pos = fromPolar(r, this.theta).add(this.center);
+    }
+    
+    getr() : number {
+        return (this.R * Math.cos(degToRad * this.theta * this.K));
+    }
+
+    stop() {
+        if(this.id > 0) {
+            clearInterval(this.id);
+        }
+    }
+
+    start() {
+        const newId = setInterval(this.draw.bind(this), delay);
+        this.id = newId;
+    }
+
+    draw() {
+        ctx.strokeStyle = "white";
+        const start = this.pos;
+        this.theta += this.dtheta;
+        const r = this.getr();
+        console.log(r);
+        console.log(this.theta);
+        this.pos = fromPolar(r, this.theta).add(this.center);
+
+        drawLine(start, this.pos, ctx);
+    }
 }
 
-function draw() {
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "rgb(24 24 24 / 0.5)"
-    ctx.fillRect(0,0,ctx.canvas.width, ctx.canvas.height);
-    const start = pos;
-    theta += dtheta;
-    const r = (outerR * Math.cos(degToRad * theta * K));
-    pos = fromPolar(r, theta).add(center);
+function initializeRunners() {
+    for(let i = 0; i < runnerCount; i++) {
+        lineRunners.push(new lineRunner());
+    }
+}
 
-    drawLine(start, pos, ctx);
+function startRunners() {
+    lineRunners.forEach(runner => {
+        runner.start();
+    });
+}
+
+function stopRunners() {
+    lineRunners.forEach(runner => {
+        runner.stop();
+    });
+}
+
+function freeRunners() {
+    for(let i = 0; i < runnerCount; i++) {
+        lineRunners.pop();
+    }
+}
+
+function clearCanvas(opacity : number) {
+    const pixels = ctx.getImageData(0,0,ctx.canvas.width, ctx.canvas.height);
+    
+    for(let i = 3; i < pixels.data.length; i+=4) {
+        const curA = pixels.data[i];
+        if(curA == undefined) return;
+
+        pixels.data[i] = Math.floor(curA * opacity);
+    }
+    ctx.putImageData(pixels, 0, 0);
+
 }
 
 onMounted(() => {
     const canvas = document.querySelector('canvas') as HTMLCanvasElement;
     const context = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        if (intervalId != null) clearInterval(intervalId);
-        intervalId = setInterval(draw, 1000/framerate);
     }
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    if (context) start(context);
+    if (context)  {
+        ctx = context;
+        initializeRunners();
+        startRunners();
+        clearCanvasID = setInterval(clearCanvas, delay, 0.9);
+    }
+    
 });
 
 onUnmounted(() => {
-    if (intervalId != null) clearInterval(intervalId);
+    stopRunners();
+    freeRunners();
+    clearInterval(clearCanvasID);
 });
+
+
 </script>
