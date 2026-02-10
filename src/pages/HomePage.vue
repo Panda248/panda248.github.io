@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import HubCanvasItem from '@/components/HubCanvasItem.vue';
-  import CoverItem from '../components/CoverItem.vue';
-  import GalleryItem from '../components/GalleryItem.vue';
-  import LinksItem from '../components/LinksItem.vue';
+import CoverItem from '../components/CoverItem.vue';
+import GalleryItem from '../components/GalleryItem.vue';
+import LinksItem from '../components/LinksItem.vue';
+import CanvasItem from '@/components/CanvasItem.vue';
+import { HubDrawing } from '@/assets/HubDrawing';
 </script>
 
 <template>
@@ -15,7 +16,8 @@
       <LinksItem />
       <GalleryItem />
     </main> 
-    <HubCanvasItem />
+    <!-- <HubCanvasItem /> -->
+    <CanvasItem :drawing-instance="new HubDrawing()" />
 </div>
 </template>
 

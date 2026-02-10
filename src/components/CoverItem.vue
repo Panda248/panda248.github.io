@@ -1,7 +1,7 @@
   <template>
     <div class="Cover">   
         <h1 class="nametag montserrat-title">Andrew Hu</h1>   
-        <h1 class="about montserrat-text">Computer Science and Immersive Media Design Student at the University of Maryland</h1>
+        <h1 class="about montserrat-header">Computer Science and Immersive Media Design Student at the University of Maryland</h1>
     </div>
 </template>
 
@@ -34,16 +34,16 @@ onMounted(() => {
 .nametag {
   position: sticky;
   font-size: 10vw;
-  top: 30vh;
+  top: 35vh;
 }
 
 .about {
-  font-size: 5vw;
-  margin-top: 30vh;
+  font-size: 3.5vw;
+  margin-top: 40vh;
 }
 @media screen and (min-width: 800px) {
   .about {
-    font-size: 40px; 
+    font-size: 28px; 
   }
   .nametag {
     font-size: 80px;
