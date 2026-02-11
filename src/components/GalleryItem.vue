@@ -7,7 +7,7 @@
                 <!-- <img src="../assets/pandanotfound.png" alt=""> -->
             </li>
             <li class="montserrat-text">
-                <RouterLink to="/log">
+                <RouterLink class="unstyled" to="/log">
                 DCC Capstone Project
                 <!-- <img src="../assets/dcclogo.png" alt="">-->
                 </RouterLink>

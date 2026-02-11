@@ -14,7 +14,7 @@ main {
   border-radius: 20px;
 }
 
-a {
+.unstyled {
   text-decoration: inherit;
   color: inherit;
 }

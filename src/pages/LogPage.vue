@@ -5,7 +5,9 @@ import markdownit from 'markdown-it';
 // import fs from "fs";
 import { ref, onMounted } from 'vue';
 
-const md = markdownit();
+const md = markdownit({
+    breaks: true
+});
 let filename = "";
 let lastSelected : HTMLElement;
 const content = ref("");
@@ -42,7 +44,7 @@ async function loadLog(logName: string) {
     
     const response = await fetch(`/logs/${filename}.md`);
     const data = await response.text()
-    content.value = md.render(data);
+    content.value = md.render(data, );
 }
 
 function selectElement(event: Event) {
@@ -58,7 +60,7 @@ function selectElement(event: Event) {
     <div id="log-hub">
         <CanvasItem :drawing-instance="new HubDrawing" />
         <header>
-            <RouterLink class="montserrat-text" to="/">
+            <RouterLink class="montserrat-text unstyled" to="/">
                 Go Back
             </RouterLink> 
         </header>
@@ -67,12 +69,12 @@ function selectElement(event: Event) {
             <hr>
             <aside>
             <ul>
-                <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
-                    Test Log
+                <li class="montserrat-text" @click="loadLog('Log1'); selectElement($event);">
+                    Log #1
                 </li>
-                <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
+                <!-- <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
                     Test Log
-                </li>
+                </li> -->
             </ul>
             </aside>
         </main>
@@ -93,6 +95,7 @@ ul {
     display: flexbox;
     list-style: none;
     padding: 10;
+    width: 8rem;
 
 }
 li {
