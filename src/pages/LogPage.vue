@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { HubDrawing } from '@/assets/HubDrawing';
 import CanvasItem from '../components/CanvasItem.vue';
 import markdownit from 'markdown-it';
 // import fs from "fs";
@@ -58,7 +57,7 @@ function selectElement(event: Event) {
 
 <template>
     <div id="log-hub">
-        <CanvasItem :drawing-instance="new HubDrawing" />
+        <CanvasItem />
         <header>
             <RouterLink class="montserrat-text unstyled" to="/">
                 Go Back

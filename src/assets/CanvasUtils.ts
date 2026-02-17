@@ -64,16 +64,3 @@ export class Rect {
         context.fillRect(this.center.x - this.width/2, this.center.y - this.width/2, this.width, this.height);
     }
 }
-
-export function clearCanvas(opacity : number, ctx : CanvasRenderingContext2D) {
-    const pixels = ctx.getImageData(0,0,ctx.canvas.width, ctx.canvas.height);
-    
-    for(let i = 3; i < pixels.data.length; i+=4) {
-        const curA = pixels.data[i];
-        if(curA == undefined) return;
-
-        pixels.data[i] = Math.floor(curA * opacity);
-    }
-    ctx.putImageData(pixels, 0, 0);
-
-}
