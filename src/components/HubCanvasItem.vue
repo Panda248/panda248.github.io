@@ -24,9 +24,9 @@ let clearCanvasID : number;
 
 const lineRunners : lineRunner[] = [];
 
-const runnerCount = 10;
+const runnerCount = 20;
 
-const framerate = 24;
+const framerate = 50;
 const delay = 1000/framerate;
 
 
@@ -41,11 +41,11 @@ class lineRunner {
 
     constructor() {
         this.id = -1;
-        this.R = (Math.random() * 500) + 500;
+        this.R = (Math.random() * 500) + 250;
         this.K = Math.random() * 2;
         this.center = new Point(Math.random() * ctx.canvas.width, Math.random() * ctx.canvas.height);
         this.theta = Math.random() * 360;
-        this.dtheta = 5;
+        this.dtheta = 2;
 
         const r = this.getr();
         this.pos = fromPolar(r, this.theta).add(this.center);

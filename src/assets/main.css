@@ -18,6 +18,10 @@ main {
   text-decoration: inherit;
   color: inherit;
 }
+.unstyled:hover {
+  text-decoration: inherit;
+  color: inherit;
+}
 
 .montserrat-title {
   font-family: "Montserrat", sans-serif;

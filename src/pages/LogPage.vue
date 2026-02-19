@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CanvasItem from '../components/CanvasItem.vue';
 import markdownit from 'markdown-it';
 // import fs from "fs";
 import { ref, onMounted } from 'vue';
@@ -57,23 +56,24 @@ function selectElement(event: Event) {
 
 <template>
     <div id="log-hub">
-        <CanvasItem />
+        <!-- <CanvasItem /> -->
+        <div id="background"></div>
         <header>
             <RouterLink class="montserrat-text unstyled" to="/">
                 Go Back
             </RouterLink> 
         </header>
         <main >
-            <div v-html="content"></div>
+            <div class="log-content" v-html="content"></div>
             <hr>
             <aside>
             <ul>
                 <li class="montserrat-text" @click="loadLog('Log1'); selectElement($event);">
                     Log #1
                 </li>
-                <!-- <li class="montserrat-text" @click="loadLog('Log0'); selectElement($event);">
-                    Test Log
-                </li> -->
+                <li class="montserrat-text" @click="loadLog('Log2'); selectElement($event);">
+                    Log #2
+                </li>
             </ul>
             </aside>
         </main>
@@ -110,4 +110,24 @@ li:hover {
     color:aliceblue;
     text-decoration: underline;
 }
+
+#background {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position:fixed;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("glitchimg.jpg");
+    opacity: 0.1;
+}
+:deep(.log-content a) {
+    color:green;
+    text-decoration: inherit;
+}
+
+:deep(.log-content a:hover) {
+    color: aliceblue;
+}
+
 </style>
