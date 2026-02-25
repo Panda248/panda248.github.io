@@ -71,8 +71,8 @@ class lineRunner {
         const start = this.pos;
         this.theta += this.dtheta;
         const r = this.getr();
-        console.log(r);
-        console.log(this.theta);
+        // console.log(r);
+        // console.log(this.theta);
         this.pos = fromPolar(r, this.theta).add(this.center);
 
         drawLine(start, this.pos, ctx);

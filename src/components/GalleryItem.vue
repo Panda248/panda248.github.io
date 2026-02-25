@@ -12,16 +12,10 @@
         <h1>What I've worked on</h1>
         <ul>
             <li class="montserrat-text">
-                <a class="unstyled" href="https://ichiu.itch.io/light-it-up">
+                <a class="unstyled" href="https://ichiu.itch.io/light-it-up" target="_blank">
                     UMD 2025 GameJam
                     <img src="https://img.itch.zone/aW1nLzI0MjI2MTY3LnBuZw==/347x500/1r0gKN.png"/>
                 </a>
-            </li>
-            <li class="montserrat-text">
-                Thing 2
-            </li>
-            <li class="montserrat-text">
-                Thing 3
             </li>
         </ul>
     </div>

@@ -118,11 +118,11 @@ li:hover {
     position:fixed;
     height: 100vh;
     width: 100vw;
-    background-image: url("glitchimg.jpg");
-    opacity: 0.1;
+    background-image: url("/public/glitchimg.jpg");
+    opacity: 0.4;
 }
 :deep(.log-content a) {
-    color:green;
+    color:lightgreen;
     text-decoration: inherit;
 }
 
