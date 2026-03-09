@@ -77,6 +77,9 @@ function selectElement(event: Event) {
                 <li class="montserrat-text" @click="loadLog('Log3'); selectElement($event);">
                     Log #3
                 </li>
+                <li class="montserrat-text" @click="loadLog('Log4'); selectElement($event);">
+                    Log #4
+                </li>
             </ul>
             </aside>
         </main>
@@ -122,7 +125,7 @@ li:hover {
     height: 100vh;
     width: 100vw;
     background-image: url("/public/glitchimg.jpg");
-    opacity: 0.4;
+    opacity: 0.2;
 }
 :deep(.log-content a) {
     color:lightgreen;
