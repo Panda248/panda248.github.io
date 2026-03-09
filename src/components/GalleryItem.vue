@@ -12,9 +12,21 @@
         <h1>What I've worked on</h1>
         <ul>
             <li class="montserrat-text">
+                <a class="unstyled" href="https://panda248.itch.io/all-you-can-eat-sushi" target="_blank">
+                    Ctrl-Alt-DMV 2026 GameJam
+                    <img src="https://img.itch.zone/aW1nLzI1ODg1NzQwLnBuZw==/315x250%23c/q1J5FK.png" alt="">
+                </a>
+            </li>
+            <li class="montserrat-text">
                 <a class="unstyled" href="https://ichiu.itch.io/light-it-up" target="_blank">
-                    UMD 2025 GameJam
-                    <img src="https://img.itch.zone/aW1nLzI0MjI2MTY3LnBuZw==/347x500/1r0gKN.png" alt="">
+                    UMD Fall 2025 GameJam
+                    <img src="https://img.itch.zone/aW1nLzI0MjI2MTY3LnBuZw==/315x250%23c/xdSmNB.png " alt="">
+                </a>
+            </li>
+            <li class="montserrat-text">
+                <a class="unstyled" href="https://www.kennedy-center.org/whats-on/explore-by-genre/exhibits/2024-2025/wave-from-space-to-ocean/" target="_blank">
+                    Wave: From Space to Ocean
+                    <img src="https://www.kennedy-center.org/globalassets/whats-on/festivals-and-series/earth-to-space/exhibits/wave_gallery_1.jpg" alt="">
                 </a>
             </li>
         </ul>
@@ -44,8 +56,10 @@
         background-repeat: no-repeat; */
     }
     img {
-        height: 100%;
+        height: 90%;
+        width: 100%;
         border-radius: 10%;
+        object-fit: cover;
     }
     a {
         display: flex;
@@ -53,7 +67,7 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        padding: 0 5% 2% 5%;
+        padding: 0 2% 2% 2%;
 
     }
     a:hover {
