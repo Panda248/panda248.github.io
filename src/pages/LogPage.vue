@@ -80,6 +80,9 @@ function selectElement(event: Event) {
                 <li class="montserrat-text" @click="loadLog('Log4'); selectElement($event);">
                     Log #4
                 </li>
+                <li class="montserrat-text" @click="loadLog('Log5'); selectElement($event);">
+                    Log #5
+                </li>
             </ul>
             </aside>
         </main>
