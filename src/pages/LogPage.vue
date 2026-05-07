@@ -98,7 +98,12 @@ function selectElement(event: Event) {
                 <li class="montserrat-text" @click="loadLog('Log10'); selectElement($event);">
                     Log #10
                 </li>
-                
+                <li class="montserrat-text" @click="loadLog('Log11'); selectElement($event);">
+                    Log #11
+                </li>
+                <li class="montserrat-text" @click="loadLog('Log12'); selectElement($event);">
+                    Log #12
+                </li>
             </ul>
             </aside>
         </main>
